@@ -1,18 +1,18 @@
-var N = 1
-var dic = [Int](repeating: 0, count: 10)
-// 각각 배열 번호에 들어갈 숫자의 빈도수를 셀 수 잇음
+import Foundation
 
-(0..<3).forEach { _ in
-    N *= Int(readLine()!)!
+guard let A = Int(readLine()!), let B = Int(readLine()!), let C = Int(readLine()!) else { fatalError("Invalid input") }
+
+let result = A * B * C
+let resultString = String(result)
+
+var counts = Array(repeating: 0, count: 10)
+
+for char in resultString {
+    if let number = Int(String(char)) {
+        counts[number] += 1
+    }
 }
 
-while N > 0 {
-    let rem = N % 10
-    dic[rem] += 1
-    N /= 10
+for count in counts {
+    print(count)
 }
-
-dic.forEach { print($0)
-    
-}
-
