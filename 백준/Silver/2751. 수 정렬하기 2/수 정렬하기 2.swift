@@ -1,13 +1,15 @@
 import Foundation
 
 let n = Int(readLine()!)!
-var arr : [Int] = []
+var num = [Int]()
 
 for i in 0..<n {
-    arr.append(Int(readLine()!)!)
+    if let input = readLine() {
+        num.append(Int(input)!)
+    }
 }
-arr.sort()
+num.sort()
 
-for k in 0..<n {
-    print(arr[k])
+for i in num {
+    print(i)
 }
