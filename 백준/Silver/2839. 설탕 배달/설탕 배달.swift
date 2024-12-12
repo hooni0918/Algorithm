@@ -1,21 +1,24 @@
 import Foundation
 
-var n = Int(readLine()!)!
+var input = Int(readLine()!)!
 
-var result = 0
+var dp = Array(repeating: 5001, count: input + 1)
+ 
+dp[0] = 0
 
-while n >= 3 {
-    if n % 5 == 0 {
-        result += n / 5
-        n = 0
-    } else  {
-        n -= 3
-        result += 1
+for i in 1...input {
+    
+    if i >= 3 {
+        dp[i] = min(dp[i],dp[i-3]+1)
+        
     }
+    
+    if i >= 5 {
+        dp[i] = min(dp[i],dp[i-5]+1)
+        
+    }
+
+        
 }
 
-if n != 0 {
-    print(-1)
-} else {
-    print(result)
-}
+print(dp[input] == 5001 ? -1 : dp[input])
