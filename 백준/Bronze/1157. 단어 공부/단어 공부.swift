@@ -1,19 +1,17 @@
-import Foundation
 let word = readLine()!.uppercased()
-var dict: [String:Int] = [:]
-var result: [String] = []
+
+var charCount = [Character: Int]()
 
 for i in word {
-    if dict[String(i)] == nil {
-        dict[String(i)] = 1
-    }else {
-        dict[String(i)]! += 1
-    }
-}
-for key in dict.keys {
-    if dict[key] == dict.values.max() {
-        result.append(key)
-    }
+    charCount[i, default: 0] += 1
 }
 
-print(result.count > 1 ? "?" : "\(result[0])" )
+var maxValue = charCount.values.max()
+var maxChars = charCount.filter { $0.value == maxValue! }
+
+if maxChars.count > 1 {
+    print("?") }
+else {
+    print(maxChars.keys.first!)
+}
+
